@@ -4,8 +4,8 @@
 
 ### Text Analytics 
 
-[Text-based Industry Reclassification and Industry Momentum](/sample_page)
-<img src="images/dummy_thumbnail.jpg?raw=true"/>
+- [Text-based Industry Reclassification and Industry Momentum](/ind_momentum)
+<img src="images/ind_momentum_cover.jpg?raw=true"/>
 
 ---
 
@@ -14,8 +14,8 @@
 
 ### Machine Learning
 
-- [Machine Learning for Stock Selection](/sample_page)
-<img src="images/dummy_thumbnail.jpg?raw=true"/>
+- [Machine Learning for Multifactor Stock Selection](/ml_multifactor)
+<img src="images/ml_multifactor_cover.jpg?raw=true"/>
 
 ---
 
@@ -23,5 +23,4 @@
 
 
 ---
-<p style="font-size:11px">Page template forked from <a href="https://github.com/evanca/quick-portfolio">evanca</a></p>
 <!-- Remove above link if you don't want to attibute -->

@@ -15,6 +15,6 @@ Starting from the 2015 annual report (and the 2017 semi-annual report), the Chin
   - Tokenize the text and keep nouns
   - Remove high frequency words and rare words, as they introduce noise
   - Remove reports that have few unique words
-- Map text into vectors following the Bag-of-Words model: Denote the vector of company i at period t as v_i,t 
+- Map text into vectors following the Bag-of-Words model: Denote the vector of company <img src="/tex/77a3b857d53fb44e33b53e4c8b68351a.svg?invert_in_darkmode&sanitize=true" align=middle width=5.663225699999989pt height=21.68300969999999pt/> at period <img src="/tex/4f4f4e395762a3af4575de74c019ebb5.svg?invert_in_darkmode&sanitize=true" align=middle width=5.936097749999991pt height=20.221802699999984pt/> as <img src="/tex/5303aa70c8363f33703edcbe895964dd.svg?invert_in_darkmode&sanitize=true" align=middle width=26.68284464999999pt height=20.221802699999984pt/> 
 
 

@@ -21,6 +21,5 @@ Starting from the 2015 annual report (and the 2017 semi-annual report), the Chin
   - Calculate similarity scores: $Similarity(f,j)_t = Cosinesimilarity(f, j)_t - Median(\{CosineSimilarity(f, k)_t, k \in Companies_t\})$ 
 - Define industry peers:
 
-
 ### Analysis:
 

@@ -25,8 +25,5 @@
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Exploratory research at _China Securities Co., Ltd_
 
 <img src="images/ml_multifactor_cover.png?raw=true"/>
-<img src="images/ml_multifactor_cover.png?raw=true"/>
-<img src="tex/190083ef7a1625fbc75f243cffb9c96d.svg"/>
-<img src="tex/9a52beaa9b056009f191a085ec25467e.svg?invert_in_darkmode&sanitize=true" align=middle width=713.0976797999999pt height=24.65753399999998pt/>
 
 ---

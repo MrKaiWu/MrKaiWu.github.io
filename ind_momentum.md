@@ -1,0 +1,3 @@
+## Text-based Industry Reclassification and Industry Momentum
+
+**Project Overview:** This is my graduate thesis at _Renmin University of China_, completed during the spring of 2019. I scraped annual and semi-annual reports of China's listed firms from websites, extracted the Product & Description chapter from Management Discussion & Analysis, from which I further built a new industry classification. This classification performed well as compared to conventional classifications. The new industry momentum factor, calculated as the average return of industy peers, was proved to have much stronger predictive power of future stock returns than conventional industry momentum factor.

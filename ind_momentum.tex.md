@@ -18,3 +18,8 @@ Starting from the 2015 annual report (and the 2017 semi-annual report), the Chin
 - Map text into vectors following the Bag-of-Words model: Denote the vector of company $i$ at period $t$ as $v_i,t$ 
 
 
+\cos (2\theta) = \cos^2 \theta - \sin^2 \theta
+
+$\cos (2\theta) = \cos^2 \theta - \sin^2 \theta$
+
+$$\cos (2\theta) = \cos^2 \theta - \sin^2 \theta$$

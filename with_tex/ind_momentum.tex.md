@@ -18,9 +18,9 @@ Starting from the 2015 annual report (and the 2017 semi-annual report), the Chin
 - Map text into vectors following the Bag-of-Words model: Denote the normalized vector of company $i$ at period $t$ as $v_{i,t}$  
 - Cacluate similarity scores between any two comany-period observations
   - Calculate text vector distances using cosine similarity: Denote the cosine similarity between comany $i$ and company $j$ at period $t$ as $CosineSimilarity(i, j)_t = v_{i,j} * v_{j,t}$
-  - Calculate similarity scores: $Similarity(i,j)_t = Cosinesimilarity(i, j)_t - Median(\{k \in Companies_t\: CosineSimilarity(i, k)_t})$, where $Companies_t$ is the set of companies at period $t$.
+  - Calculate similarity scores: $Similarity(i,j)_t = Cosinesimilarity(i, j)_t - Median(\{k \in Companies_t: CosineSimilarity(i, k)_t})$, where $Companies_t$ is the set of companies at period $t$.
 - Define **industry peers**:
-  - For a target company $i$, its industry peer at period $t$ is defined as: $IndustryPeer_{i, t} = \{j \in Companies_t\: Min(Similarity(i, j)_t, Similarity(j, i)_t) > Threshold_t\}$
+  - For a target company $i$, its industry peer at period $t$ is defined as: $IndustryPeer_{i, t} = \{j \in Companies_t: Min(Similarity(i, j)_t, Similarity(j, i)_t) > Threshold_t\}$
   - Use Shenwan Industry Classification (henceforth SWS Ind) to determine the value of $Threshold_t$: set $Threshold_t$ in a way that at period $t$, the number of industry pairs defined by text is approximate to that defined by SWS Ind
   
   

@@ -18,3 +18,8 @@ Starting from the 2015 annual report (and the 2017 semi-annual report), the Chin
 - Map text into vectors following the Bag-of-Words model: Denote the vector of company <img src="/tex/77a3b857d53fb44e33b53e4c8b68351a.svg?invert_in_darkmode&sanitize=true" align=middle width=5.663225699999989pt height=21.68300969999999pt/> at period <img src="/tex/4f4f4e395762a3af4575de74c019ebb5.svg?invert_in_darkmode&sanitize=true" align=middle width=5.936097749999991pt height=20.221802699999984pt/> as <img src="/tex/5303aa70c8363f33703edcbe895964dd.svg?invert_in_darkmode&sanitize=true" align=middle width=26.68284464999999pt height=20.221802699999984pt/> 
 
 
+\cos (2\theta) = \cos^2 \theta - \sin^2 \theta
+
+<img src="/tex/6e0dcbd9a7f64fb754bdadbff2e656e1.svg?invert_in_darkmode&sanitize=true" align=middle width=171.96327554999996pt height=28.660278900000026pt/>
+
+<p align="center"><img src="/tex/b0423a53b0bd71af57904a7baf0dd825.svg?invert_in_darkmode&sanitize=true" align=middle width=171.96327555pt height=18.439728449999997pt/></p>

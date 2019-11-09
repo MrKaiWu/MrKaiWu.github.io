@@ -26,6 +26,6 @@
 
 <img src="images/ml_multifactor_cover.png?raw=true"/>
 <img src="images/ml_multifactor_cover.png?raw=true"/>
-<img src="/tex/190083ef7a1625fbc75f243cffb9c96d.svg?raw=true"/>
+<img src="tex/190083ef7a1625fbc75f243cffb9c96d.svg"/>
 
 ---

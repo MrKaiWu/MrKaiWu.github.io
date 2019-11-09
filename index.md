@@ -4,7 +4,7 @@
 
 ### Text Analytics 
 
-- [Text-based Industry Reclassification and Industry Momentum](/ind_momentum.tex.md)
+- [Text-based Industry Reclassification and Industry Momentum](/ind_momentum.md)
 
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Graduate thesis at _Renmin University of China_
 

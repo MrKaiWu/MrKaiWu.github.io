@@ -9,17 +9,12 @@ Conventional industry classifications typically categorize a company into one in
 
 Starting from the 2015 annual report (and the 2017 semi-annual report), the China Securities Regulatory Commission(henceforth CSRC) requires listed companies to disclose their business profiles. This section contains a large number of vocabulary related to the company's products and services. If the product & services descriptions of two companies are similar, they probably belong to the same industries. Based on this observation, my study uses text information to redo the industry classification. The specific steps are as follows:
 
-- Webscraping: annual and semi-annual reports are automatically collected from http://www.elangshen.com/
+- Webscraping: annual and semi-annual reports are automatically collected from elangshen(http://www.elangshen.com/)  
 - Text cleaning:
   - Extract product & services descriptions using regular expressions; rid off tables which are mostly irrelavant or boilerplates
   - Tokenize the text and keep nouns
   - Remove high frequency words and rare words, as they introduce noise
   - Remove reports that have few unique words
-- Map text into vectors following the Bag-of-Words model: Denote the vector of company $i$ at period $t$ as $v_i,t$ 
-
-
-\cos (2\theta) = \cos^2 \theta - \sin^2 \theta
-
-$\cos (2\theta) = \cos^2 \theta - \sin^2 \theta$
-
-$$\cos (2\theta) = \cos^2 \theta - \sin^2 \theta$$
+- Map text into vectors following the Bag-of-Words model: Denote the vector of company $i$ at period $t$ as $v_{i,t}$  
+- $CosineSimilarity(f, j)_t = v_{f,j} * v_{j,t}$
+$Similarity(f,j)_t = Cosinesimilarity(f, j)_t - Median(\{CosineSimilarity(f, k)_t, k \in \{Companies_t\}\})$ 

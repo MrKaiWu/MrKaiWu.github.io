@@ -97,7 +97,24 @@ As we see in **3.1**, industry peers of a focal company come from different SWS 
 - Use Monte Carlo Simulation to calculate the part of Coappear Score attributed to SWS Ind distribution: a high Coappear Score does not necessarily means that two SWS Inds are highly correlated. Chances are that they frequently coappear because they both contain a large number of companies. If assigning industry peers randomly, then the Pseudo Coappear Score should only reflect the total number of companies in each industry, and is thus able to explain the part of Coappear Score purely attributed to SWS Ind distribution. I thus implemented a Monte Carlo Simulation of 100 rounds, where at each round companies are randomly assigned to be other focal companies' industry peers, keeping for each company the nunmber of industry peers as well as the times of being industry peers fixed. The Pseudo Coappear Score for SWS Inds $a$ and $b$ is calculated as $PseudoCoappear_{a, b} = 0.01 \times \sum_{trial_0} ^{trial_{100}} TrialCoappear_{a, b, i}$, where $TrialCoappear_{a, b, i}$ is the Coappear Score between $a$ and $b$ in $trial_i$.
 - Calculate the Normalized Coappear Score as the final score: $NormalizedCoappear_{a,b} = \dfrac{Coappear_{a,b}}{PseudoCoappear_{a, b}}$ 
 
+There are 5,356 potential SWS Ind pairs. Listed below are the top 50 SWS Ind pairs ranked by Normalized Coappear Score. The result is pretty impressive: we identify highly related industry pairs without using prior knowledge. The result further lends credence to text-based industry classification.
 
+**Table 6** Top 50 Most Related SWS Ind Pairs
+|                                                      |                                                                |                                               |                                                       |
+|------------------------------------------------------|----------------------------------------------------------------|-----------------------------------------------|-------------------------------------------------------|
+| 1. airport & air freight                             | 2. port & rail transport                                       | 3. port & shipping                            | 4. food & beverage manufacturing                      |
+| 5. livestock and poultry farming & feed              | 6. tourism & attractions                                       | 7. oil exploitation & Mining service          | 8. shipping & rail transport                          |
+| 9. airport & port                                    | 10. insurance & securities                                     | 11. rare metal & gold                         | 12. fishery & livestock and poultry farming           |
+| 13. animal health & livestock and poultry farming    | 14. airport & shipping                                         | 15. ground equipment & aerospace equipment    | 16. securities & bank                                 |
+| 17. other mining & gold                              | 18. livestock and poultry farming & crop farming               | 19. diversified finance & securities          | 20. insurance & bank                                  |
+| 21. bus & airport                                    | 22. water & environmental engineering and   services           | 23. attractions & hotel                       | 24. animal health & feed                              |
+| 25. other mining & rare metal                        | 26. agricultural integration & crop farming                    | 27. insurance & diversified finance           | 28. diversified finance & bank                        |
+| 29. airport & rail transport                         | 30. traditional Chinese medicine & chemical and pharmaceutical | 31. infrastructure & housing construction     | 32. industrial metal & gold                           |
+| 33. chemical and pharmaceutical & biological product | 34. bus & rail transport                                       | 35. tourism & hotel                           | 36. traditional Chinese medicine & biological product |
+| 37. bus & air freight                                | 38. ground equipment & aviation equipment                      | 39. fishery & feed                            | 40. industrial metal & rare metal                     |
+| 41. coal mining & rail transport                     | 42. park development & real estate development                 | 43. garden engineering & water                | 44. general retail & clothing                         |
+| 45. fishery & crop farming                           | 46. aerospace equipment & aviation equipment                   | 47. Internet media & marketing communications |                                                       |
+| 48. animal health & fishery                          | 49. general retail & commercial property management            | 50. medical service & biological product      |                                                       |
 
-
+#### 3.4 Identify the Most Related SWS Ind Pairs
 

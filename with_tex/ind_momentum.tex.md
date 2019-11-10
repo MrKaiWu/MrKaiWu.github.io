@@ -117,5 +117,10 @@ There are 5,356 potential SWS Ind pairs. Listed below are the top 50 SWS Ind pai
 | 45. fishery & crop farming                           | 46. aerospace equipment & aviation equipment                   | 47. Internet media & marketing communications |                                                       |
 | 48. animal health & fishery                          | 49. general retail & commercial property management            | 50. medical service & biological product      |                                                       |
 
-#### 3.4 Identify the Most Related SWS Ind Pairs
+#### 3.4 Explanatory Power of Industry-level Variables
+
+Companies in the same industry should also exhibit similar patterns in a wide variety of variables, including valuation multiples (PE ratio, book to market ratio), profitability (return on asset, return on equity), operating efficiency (asset turnover ratio), growth potential (annual sales growth), debt capacity (liability ratio), R&D expense ratio and analyst forecasted growth. If a classification is indeed well-defined, then an industry-level variable aggregated from the composite companies should have great explanatory power on company-level variables. 
+
+$variable_{𝑖,𝑡} = 𝛼 + 𝛽 \times variable_{𝑖𝑛𝑑,𝑡}+ 𝛾 \times time dummies + 𝜖_{𝑖,𝑡}$
+
 

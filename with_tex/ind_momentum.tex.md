@@ -119,26 +119,26 @@ There are 5,356 potential SWS Ind pairs. Listed below are the top 50 SWS Ind pai
 
 #### 3.4 Explanatory Power of Industry-level Variables
 
-Companies in the same industry should also exhibit similar patterns in a wide variety of variables, including valuation multiples (PE ratio, book to market ratio), profitability (return on asset, return on equity), operating efficiency (asset turnover ratio), growth potential (annual sales growth), debt capacity (liability ratio), R&D expense ratio and analyst forecasted growth. If a classification is indeed well-defined, then an industry-level variable aggregated from the composite companies should have great explanatory power on company-level variables, hence a relatively high regression R-squared.
+Companies in the same industry should also exhibit similar patterns in a wide variety of variables, including valuation multiples (PE ratio, book to market ratio), profitability (return on asset, return on equity), operating efficiency (asset turnover ratio), growth potential (annual sales growth), debt capacity (debt ratio), R&D expense ratio and analyst forecasted growth. If a classification is indeed well-defined, then an industry-level variable aggregated from the composite companies should have great explanatory power on company-level variables, hence a relatively high regression R-squared.
 
 I used the following company-wise regression to compare CSRC Ind, SWS Ind and text-based industry classification. $variable$ can be any of the variables mentioned above, and $variable_{ind_{i,t}}$ is the corresponding industry average excluding company $i$:
 $variable_{i,t} = \alpha + \beta \times variable_{ind_{i,t}}+ \gamma \times time\_dummies + \epsilon_{i,t}$
 
 Table 7 summarizes all the adjusted R-squared obtained from the regressions. SWS Ind and TNIC both win 4 battles, and tie in one. CSRC Ind fails to win even one battle. Notably, although the SWS Ind is the most popular one to financial analysts, it falls behind text-based industry classification in the test where analyst forecasted growth is the variable of interest. Such a result seems to indicate that analysts will identify comparable companies based on their own understanding, rather than fully relying on established industry classification.
 
-**Table 7** 
+**Table 7** Regress Company-level Variable on Industry-level Variable: R-squared results
 
 | Variables       | CSRC Ind | SWS Ind | TNIC   | # Samples |
 |-----------------|----------|---------|--------|-----------|
-| EP              | 18.09%   | **18.25%**  | 11.17% | 9139      |
-| BM              | 26.55%   | **27.80%**  | **27.80%** | 9139      |
-| ROA             | 8.71%    | 8.38%   | **12.38%** | 9139      |
-| ROE             | 6.53%    | 6.38%   | **7.42%**  | 9113      |
-| TURNOVER        | 27.21%   | **29.83%**  | 27.93% | 9139      |
-| GROWTH          | 5.68%    | **6.00%**   | 3.63%  | 9139      |
-| DEBT            | 22.72%   | 24.20%  | **27.61%** | 9139      |
-| RD EXPENSE      | 41.98%   | **44.20%**  | 43.08% | 9139      |
-| FORECAST GROWTH | 5.68%    | 7.00%   | **8.61%**  | 6314      |
+| _EP_              | 18.09%   | **18.25%**  | 11.17% | 9139      |
+| _BM_              | 26.55%   | **27.80%**  | **27.80%** | 9139      |
+| _ROA_             | 8.71%    | 8.38%   | **12.38%** | 9139      |
+| _ROE_             | 6.53%    | 6.38%   | **7.42%**  | 9113      |
+| _TURNOVER_        | 27.21%   | **29.83%**  | 27.93% | 9139      |
+| _GROWTH_          | 5.68%    | **6.00%**   | 3.63%  | 9139      |
+| _DEBT_            | 22.72%   | 24.20%  | **27.61%** | 9139      |
+| _RD EXPENSE_      | 41.98%   | **44.20%**  | 43.08% | 9139      |
+| _FORECAST GROWTH_ | 5.68%    | 7.00%   | **8.61%**  | 6314      |
 
 _Note: 1. EP takes the reciprocal of PE ratio to account for negative values; 2. Bold format indicates the best among three_
 

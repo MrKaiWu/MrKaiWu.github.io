@@ -100,6 +100,7 @@ As we see in **3.1**, industry peers of a focal company come from different SWS 
 There are 5,356 potential SWS Ind pairs. Listed below are the top 50 SWS Ind pairs ranked by Normalized Coappear Score. The result is pretty impressive: we identify highly related industry pairs without using prior knowledge. The result further lends credence to text-based industry classification.
 
 **Table 6** Top 50 Most Related SWS Ind Pairs
+
 |                                                      |                                                                |                                               |                                                       |
 |------------------------------------------------------|----------------------------------------------------------------|-----------------------------------------------|-------------------------------------------------------|
 | 1. airport & air freight                             | 2. port & rail transport                                       | 3. port & shipping                            | 4. food & beverage manufacturing                      |

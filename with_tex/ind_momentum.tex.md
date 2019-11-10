@@ -146,3 +146,22 @@ Table 7 summarizes all the adjusted R-squared obtained from the regressions. SWS
 
 _Note: 1. EP takes the reciprocal of PE ratio to account for negative values; 2. Bold format indicates the best among three_
 
+
+### 4. Text-based Industry Momentum
+
+I have demonstrated above that text-based industry classification is reliable. Obviously, it can capture some of the industry characteristics which is not directly reflected in a conventional classification scheme. To illustrate, a real estate company with food manufacturing taking up 25% percent of its yearly revenue is categorized to real estate industry, but its text-based industry peers will include many food manufactuers. Investors, subjected to limited attention from a behavioral finance perspective, tend to ignore this fact.
+
+The momentum effect is an usual market phenomenon by which asset prices follow an upward or downward trend for a long time. As a result, the past return of the asset, usually named momentum factor, can predict future return. Likewise, industry momentum is defined as the industry-level past return. Formally, we can define the momentum of company $i$ during period $t$ as the average stock return of its industry peers during period $t$. $IndReturn_{i, t} = \dfrac{1}{N}\(sum_{m} return_{m, t}\)$ where $m \in Peer_{i, t}$. Here I extend the concept of $Peer_{i, t}$ to conventional classifications so that two comapnies belonging to the same industry are automatically industry peers.
+
+As industry momentum can proxy for industry-level information, and the text-based industry classification defines industry associations that investors overlook, the text-based industry momentum will contain relevant industry-level information that slowly affects stock prices, resulting in a stronger momentum effect. This section presents the investigation.
+
+#### 4.1 Fama-Macbeth Cross-sectional Regression
+
+
+$return_{i, t} = \alpha + \beta_1 \times IndReturn_{i, t-1} + \beta_2 \times return_{i, t-1} + \beta_3 \times log(MV_{i, t-1}) 
+                + \beta_4 \times log(BM_{i, t-1}) + \epsilon_{i, t}$
+
+
+#### 4.2 Portfolio Backtest
+
+

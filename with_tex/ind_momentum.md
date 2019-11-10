@@ -146,3 +146,21 @@ Table 7 summarizes all the adjusted R-squared obtained from the regressions. SWS
 
 _Note: 1. EP takes the reciprocal of PE ratio to account for negative values; 2. Bold format indicates the best among three_
 
+
+### 4. Text-based Industry Momentum
+
+I have demonstrated above that text-based industry classification is reliable. Obviously, it can capture some of the industry characteristics which is not directly reflected in a conventional classification scheme. To illustrate, a real estate company with food manufacturing taking up 25% percent of its yearly revenue is categorized to real estate industry, but its text-based industry peers will include many food manufactuers. Investors, subjected to limited attention from a behavioral finance perspective, tend to ignore this fact.
+
+The momentum effect is an usual market phenomenon by which asset prices follow an upward or downward trend for a long time. As a result, the past return of the asset, usually named momentum factor, can predict future return. Likewise, industry momentum is defined as the industry-level past return. Formally, we can define the momentum of company <img src="/with_tex/tex/77a3b857d53fb44e33b53e4c8b68351a.svg?invert_in_darkmode&sanitize=true" align=middle width=5.663225699999989pt height=21.68300969999999pt/> during period <img src="/with_tex/tex/4f4f4e395762a3af4575de74c019ebb5.svg?invert_in_darkmode&sanitize=true" align=middle width=5.936097749999991pt height=20.221802699999984pt/> as the average stock return of its industry peers during period <img src="/with_tex/tex/4f4f4e395762a3af4575de74c019ebb5.svg?invert_in_darkmode&sanitize=true" align=middle width=5.936097749999991pt height=20.221802699999984pt/>. <img src="/with_tex/tex/98d1112af5046600479b1e1e4eb1e05c.svg?invert_in_darkmode&sanitize=true" align=middle width=248.67675525pt height=43.42856099999997pt/> where <img src="/with_tex/tex/4d487db9cbf0073393c2e694b27a95dd.svg?invert_in_darkmode&sanitize=true" align=middle width=83.60643059999998pt height=22.465723500000017pt/>. Here I extend the concept of <img src="/with_tex/tex/c0e9e9c0e673d72eba284423f620f7b9.svg?invert_in_darkmode&sanitize=true" align=middle width=49.08219194999999pt height=22.465723500000017pt/> to conventional classifications so that two comapnies belonging to the same industry are automatically industry peers.
+
+As industry momentum can proxy for industry-level information, and the text-based industry classification defines industry associations that investors overlook, the text-based industry momentum will contain relevant industry-level information that slowly affects stock prices, resulting in a stronger momentum effect. This section presents the investigation.
+
+#### 4.1 Fama-Macbeth Cross-sectional Regression
+
+
+<img src="/with_tex/tex/eb026c8fdf4ea8bf0731d7c352e43a08.svg?invert_in_darkmode&sanitize=true" align=middle width=700.2744391499999pt height=48.85840080000001pt/>
+
+
+#### 4.2 Portfolio Backtest
+
+

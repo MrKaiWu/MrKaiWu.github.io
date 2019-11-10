@@ -7,6 +7,8 @@ Conventional industry classifications typically categorize a company into one in
 
 ### 2. Methodology: Text-based Industry Classification
 
+My idea of using text data for industry reclassification originated from my internship at NLP tech startup. However, when I did my graduate thesis, Hoberg and Phillips (2016) already proposed a solution that had been widely accepted in academia. Hence, the following steps are based on their paper, with some steps adapted to Chinese language.
+
 Starting from the 2015 annual report (and the 2017 semi-annual report), the China Securities Regulatory Commission(henceforth CSRC) requires listed companies to disclose their business profiles. This section contains a large number of vocabulary related to the company's products and services. If the product & services descriptions of two companies are similar, they probably belong to the same industries. Based on this observation, my study uses text information to redo the industry classification. The specific steps are as follows:
 
 - Webscraping: annual and semi-annual reports are automatically collected from [elangshen](http://www.elangshen.com/)  
@@ -22,6 +24,8 @@ Starting from the 2015 annual report (and the 2017 semi-annual report), the Chin
 - Define **industry peers**:
   - For a focal company $i$, its industry peer at period $t$ is defined as: $IndustryPeer_{i, t} = \{j \in Companies_t: Min(Similarity(i, j)_t, Similarity(j, i)_t) > Threshold_t\}$
   - Use Shenwan Industry Classification (henceforth SWS Ind) to determine the value of $Threshold_t$: set $Threshold_t$ in a way that at period $t$, the number of industry pairs defined by text is approximate to that defined by SWS Ind
+
+The definition of industry peers here makes it more like a network than a classification. In fact, the classification proposed by Hoberg and Phillips (2016) was named Text-based Network Industries (TNIC for short).
 
 SWS Ind is the most popular industry classification among finance practioners in China. This study thus uses SWS Ind as the major benchmark. CSRC has also published industry classification (denoted as CSRC Ind for short), which is the default choice in academic research. But as you will see later, CSRC Ind performs worse than SWS Ind.
 
@@ -124,7 +128,7 @@ Companies in the same industry should also exhibit similar patterns in a wide va
 I used the following company-wise regression to compare CSRC Ind, SWS Ind and text-based industry classification. $variable$ can be any of the variables mentioned above, and $variable_{ind_{i,t}}$ is the corresponding industry average excluding company $i$:
 $variable_{i,t} = \alpha + \beta \times variable_{ind_{i,t}}+ \gamma \times time\_dummies + \epsilon_{i,t}$
 
-Table 7 summarizes all the adjusted R-squared obtained from the regressions. SWS Ind and TNIC both win 4 battles, and tie in one. CSRC Ind fails to win even one battle. Notably, although the SWS Ind is the most popular one to financial analysts, it falls behind text-based industry classification in the test where analyst forecasted growth is the variable of interest. Such a result seems to indicate that analysts will identify comparable companies based on their own understanding, rather than fully relying on established industry classification.
+Table 7 summarizes all the adjusted R-squared obtained from the regressions. SWS Ind and TNIC both win 4 battles, and tie in one. CSRC Ind fails to win even one battle. Notably, although the SWS Ind is the most popular one to financial analysts, it falls behind text-based industry classification in the test where analyst forecasted growth is the variable of interest. Such a result seems to indicate that analysts will identify comparable companies based on their own understanding, rather than fully relying on established industry classifications.
 
 **Table 7** Regress Company-level Variable on Industry-level Variable: R-squared results
 

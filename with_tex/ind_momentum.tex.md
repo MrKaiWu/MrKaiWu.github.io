@@ -121,6 +121,6 @@ There are 5,356 potential SWS Ind pairs. Listed below are the top 50 SWS Ind pai
 
 Companies in the same industry should also exhibit similar patterns in a wide variety of variables, including valuation multiples (PE ratio, book to market ratio), profitability (return on asset, return on equity), operating efficiency (asset turnover ratio), growth potential (annual sales growth), debt capacity (liability ratio), R&D expense ratio and analyst forecasted growth. If a classification is indeed well-defined, then an industry-level variable aggregated from the composite companies should have great explanatory power on company-level variables. 
 
-$variable_{𝑖,𝑡} = 𝛼 + 𝛽 \times variable_{𝑖𝑛𝑑,𝑡}+ 𝛾 \times time dummies + 𝜖_{𝑖,𝑡}$
+$variable_{i,t} = \alpha + \beta \times variable_{ind_i,t}+ \gamma \times time dummies + \epsilon_{i,t}$
 
 

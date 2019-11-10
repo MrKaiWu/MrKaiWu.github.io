@@ -7,6 +7,8 @@ Conventional industry classifications typically categorize a company into one in
 
 ### 2. Methodology: Text-based Industry Classification
 
+My idea of using text data for industry reclassification originated from my internship at NLP tech startup. However, when I did my graduate thesis, Hoberg and Phillips (2016) already proposed a solution that had been widely accepted in academia. Hence, the following steps are based on their paper, with some steps adapted to Chinese language.
+
 Starting from the 2015 annual report (and the 2017 semi-annual report), the China Securities Regulatory Commission(henceforth CSRC) requires listed companies to disclose their business profiles. This section contains a large number of vocabulary related to the company's products and services. If the product & services descriptions of two companies are similar, they probably belong to the same industries. Based on this observation, my study uses text information to redo the industry classification. The specific steps are as follows:
 
 - Webscraping: annual and semi-annual reports are automatically collected from [elangshen](http://www.elangshen.com/)  
@@ -22,6 +24,8 @@ Starting from the 2015 annual report (and the 2017 semi-annual report), the Chin
 - Define **industry peers**:
   - For a focal company <img src="/with_tex/tex/77a3b857d53fb44e33b53e4c8b68351a.svg?invert_in_darkmode&sanitize=true" align=middle width=5.663225699999989pt height=21.68300969999999pt/>, its industry peer at period <img src="/with_tex/tex/4f4f4e395762a3af4575de74c019ebb5.svg?invert_in_darkmode&sanitize=true" align=middle width=5.936097749999991pt height=20.221802699999984pt/> is defined as: <img src="/with_tex/tex/5630490aa2b7844495b245a9acca4bf6.svg?invert_in_darkmode&sanitize=true" align=middle width=677.3626216499999pt height=24.65753399999998pt/>
   - Use Shenwan Industry Classification (henceforth SWS Ind) to determine the value of <img src="/with_tex/tex/76bc21ee6c4fa0dd1b406deb46edd637.svg?invert_in_darkmode&sanitize=true" align=middle width=80.78226419999999pt height=22.831056599999986pt/>: set <img src="/with_tex/tex/76bc21ee6c4fa0dd1b406deb46edd637.svg?invert_in_darkmode&sanitize=true" align=middle width=80.78226419999999pt height=22.831056599999986pt/> in a way that at period <img src="/with_tex/tex/4f4f4e395762a3af4575de74c019ebb5.svg?invert_in_darkmode&sanitize=true" align=middle width=5.936097749999991pt height=20.221802699999984pt/>, the number of industry pairs defined by text is approximate to that defined by SWS Ind
+
+The definition of industry peers here makes it more like a network than a classification. In fact, the classification proposed by Hoberg and Phillips (2016) was named Text-based Network Industries (TNIC for short).
 
 SWS Ind is the most popular industry classification among finance practioners in China. This study thus uses SWS Ind as the major benchmark. CSRC has also published industry classification (denoted as CSRC Ind for short), which is the default choice in academic research. But as you will see later, CSRC Ind performs worse than SWS Ind.
 
@@ -124,7 +128,7 @@ Companies in the same industry should also exhibit similar patterns in a wide va
 I used the following company-wise regression to compare CSRC Ind, SWS Ind and text-based industry classification. <img src="/with_tex/tex/9f001922ea8a221a285fe3739db3125b.svg?invert_in_darkmode&sanitize=true" align=middle width=59.40960959999999pt height=22.831056599999986pt/> can be any of the variables mentioned above, and <img src="/with_tex/tex/2fd1c05072bf4d652405fabb3a9ea385.svg?invert_in_darkmode&sanitize=true" align=middle width=91.81516079999999pt height=22.831056599999986pt/> is the corresponding industry average excluding company <img src="/with_tex/tex/77a3b857d53fb44e33b53e4c8b68351a.svg?invert_in_darkmode&sanitize=true" align=middle width=5.663225699999989pt height=21.68300969999999pt/>:
 <img src="/with_tex/tex/77f7ad09b81e39f0db322174ea8c5cab.svg?invert_in_darkmode&sanitize=true" align=middle width=447.40356705pt height=22.831056599999986pt/>
 
-Table 7 summarizes all the adjusted R-squared obtained from the regressions. SWS Ind and TNIC both win 4 battles, and tie in one. CSRC Ind fails to win even one battle. Notably, although the SWS Ind is the most popular one to financial analysts, it falls behind text-based industry classification in the test where analyst forecasted growth is the variable of interest. Such a result seems to indicate that analysts will identify comparable companies based on their own understanding, rather than fully relying on established industry classification.
+Table 7 summarizes all the adjusted R-squared obtained from the regressions. SWS Ind and TNIC both win 4 battles, and tie in one. CSRC Ind fails to win even one battle. Notably, although the SWS Ind is the most popular one to financial analysts, it falls behind text-based industry classification in the test where analyst forecasted growth is the variable of interest. Such a result seems to indicate that analysts will identify comparable companies based on their own understanding, rather than fully relying on established industry classifications.
 
 **Table 7** Regress Company-level Variable on Industry-level Variable: R-squared results
 

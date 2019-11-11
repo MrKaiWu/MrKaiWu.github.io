@@ -22,7 +22,7 @@
 
 - [Machine Learning for Multifactor Stock Selection](/ml_multifactor)
 
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Exploratory research during my internship_
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Exploratory research during my internship
 
 <img src="images/ml_multifactor_cover.png?raw=true"/>
 

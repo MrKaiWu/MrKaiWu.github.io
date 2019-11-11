@@ -163,8 +163,6 @@ To ensure that different coefficients are directly comparable, all independent v
 
 $$ return_{i, t} = \alpha + \beta_1 \times IndReturn_{i, t-1} + \beta_2 \times return_{i, t-1} + \beta_3 \times log(MV_{i, t-1}) + \beta_4 \times log(BM_{i, t-1}) + \epsilon_{i, t}$$
 
-$$ return_{i, t} = \alpha + \beta_1 \times IndReturn_{i, t-1} + \beta_2 \times IndReturn_{i, t-2}+ \beta_3 \times IndReturn_{i, t-3}+ \beta_4 \times IndReturn_{i, t-4}+ Controls + \epsilon_{i, t}$$
-
 $$ return_{i, t} = \alpha + sum_{l=1}^{4} {\beta_l \times IndReturn_{i, t-l}} + Controls + \epsilon_{i, t}$$
 
 Table 8 summarizes the results from the first regression. Ceteris paribus, the text-based industry momentum generates the largest coefficient, t-statistics and adjusted R-squared. To my expectation, CSRC Industry Momentum is the least significant. Notably, controlling for industry momentum, the coefficients for individual stock momentum are all significantly negative, meaning that reversal is stronger than momentum.
@@ -210,5 +208,28 @@ Here I give an indirect test of the proposed mechanism. I decompose the text-bas
 
 
 
-### Conclusion
+### 5. Concluding Remarks
+- Text-based industry classification is practical in China's A-share Market. It is able to capture industry associations that are not direclty obtainable using conventional classifications, which fits the reality that most big companies have diversified business across different industries. It is not inferior to the most popular classification schema —— Shenwan Industry Classification  —— in a direct comparison. 
+- Industry momentum effect exists in China's market, but the effect lasts for weeks rather than for months. Text-based industry momentum is significantly stronger than industry momentum defined using conventional classification schemes.
+- Limited investor attention is the potential cause of the stronger text-based industry momentum effect.
 
+As corporate reports will continue to be released, we can collect more data to further test the robustness of these findings.
+
+_References:_
+
+_(I only list publications that are directly related to this post. My actual graudate thesis actually prsents much more items)_
+
+1. Bhojraj S, Lee C M C, Oler D K. What's my line? A comparison of industry classification schemes for capital market research[J]. Journal of Accounting Research, 2003, 41(5): 745-774.
+2.	Bhojraj S, Lee C M C. Who is my peer? A valuation‐based approach to the selection of comparable firms[J]. Journal of accounting research, 2002, 40(2): 407-439.
+3.	Cohen L, Frazzini A. Economic links and predictable returns[J]. The Journal of Finance, 2008, 63(4): 1977-2011.
+4.	Cohen L, Lou D. Complicated firms[J]. Journal of financial economics, 2012, 104(2): 383-400.
+5.	Hoberg G, Maksimovic V. Redefining financial constraints: A text-based analysis[J]. The Review of Financial Studies, 2014, 28(5): 1312-1352.
+6.	Hoberg G, Phillips G M. Text-based industry momentum[J]. Journal of Financial and Quantitative Analysis, 2018, 53(6): 2355-2388.
+7.	Hoberg G, Phillips G. Conglomerate industry choice and product language[J]. Management Science, 2017, 64(8): 3735-3755.
+8.	Hoberg G, Phillips G. Product market synergies and competition in mergers and acquisitions: A text-based analysis[J]. The Review of Financial Studies, 2010, 23(10): 3773-3811.
+9.	Hoberg G, Phillips G. Text-based network industries and endogenous product differentiation[J]. Journal of Political Economy, 2016, 124(5): 1423-1465.
+10.	Jegadeesh N, Titman S. Returns to buying winners and selling losers: Implications for stock market efficiency[J]. The Journal of finance, 1993, 48(1): 65-91.
+11.	Lee C M C, Ma P, Wang C C Y. Search-based peer firms: Aggregating investor perceptions through internet co-searches[J]. Journal of Financial Economics, 2015, 116(2): 410-431.
+12.	Lee C M C, Sun S T, Wang R, et al. Technological links and predictable returns[J]. Journal of Financial Economics, 2018.
+13.	Li N. Who Are My Peers? Labor Market Peer Firms Through Employees' Internet Co-Search Patterns[J]. Labor Market Peer Firms Through Employees' Internet Co-Search Patterns (November 1, 2017). Rotman School of Management Working Paper, 2017 (2558271).
+14.	Moskowitz T J, Grinblatt M. Do industries explain momentum?[J]. The Journal of finance, 1999, 54(4): 1249-1290.

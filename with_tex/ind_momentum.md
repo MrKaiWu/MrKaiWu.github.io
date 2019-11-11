@@ -165,8 +165,14 @@ To ensure that different coefficients are directly comparable, all independent v
 
 <p align="center"><img src="/with_tex/tex/570478dcf69d4672b3ea6c403d037d65.svg?invert_in_darkmode&sanitize=true" align=middle width=821.48516505pt height=16.1187015pt/></p>
 
+Table 8 summarizes the results from the first regression. Ceteris paribus, the text-based industry momentum generates the largest coefficient, t-statistics and adjusted R-squared. To my expectation, CSRC Industry Momentum is the least significant. Notably, controlling for industry momentum, the coefficients for individual stock momentum are all significantly negative, meaning that reversal is stronger than momentum.
+
 **table 8**
-<img src="/images/fm1?raw=true"/>
+<img src="/images/fm1.png?raw=true"/>
+
+
+**table 9**
+<img src="/images/fm2.png?raw=true"/>
 
 
 

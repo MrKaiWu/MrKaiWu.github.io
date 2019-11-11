@@ -165,8 +165,14 @@ $$ return_{i, t} = \alpha + \beta_1 \times IndReturn_{i, t-1} + \beta_2 \times r
 
 $$ return_{i, t} = \alpha + \beta_1 \times IndReturn_{i, t-1} + \beta_2 \times IndReturn_{i, t-2}+ \beta_3 \times IndReturn_{i, t-3}+ \beta_4 \times IndReturn_{i, t-4}+ Controls + \epsilon_{i, t}$$
 
+Table 8 summarizes the results from the first regression. Ceteris paribus, the text-based industry momentum generates the largest coefficient, t-statistics and adjusted R-squared. To my expectation, CSRC Industry Momentum is the least significant. Notably, controlling for industry momentum, the coefficients for individual stock momentum are all significantly negative, meaning that reversal is stronger than momentum.
+
 **table 8**
-<img src="/images/fm1?raw=true"/>
+<img src="/images/fm1.png?raw=true"/>
+
+
+**table 9**
+<img src="/images/fm2.png?raw=true"/>
 
 
 

@@ -166,7 +166,7 @@ $$ return_{i, t} = \alpha + \beta_1 \times IndReturn_{i, t-1} + \beta_2 \times r
 $$ return_{i, t} = \alpha + \beta_1 \times IndReturn_{i, t-1} + \beta_2 \times IndReturn_{i, t-2}+ \beta_3 \times IndReturn_{i, t-3}+ \beta_4 \times IndReturn_{i, t-4}+ Controls + \epsilon_{i, t}$$
 
 **table 8**
-<img src="images/fm1.png?raw=true"/>
+<img src="images/fm1?raw=true"/>
 
 
 

@@ -158,7 +158,8 @@ As industry momentum can proxy for industry-level information, and the text-base
 #### 4.1 Fama-Macbeth Cross-sectional Regression
 
 
-$$ return_{i, t} = \alpha + \beta_1 \times IndReturn_{i, t-1} + \beta_2 \times return_{i, t-1} + \\\\
+$$ return_{i, t} = \alpha + \beta_1 \times IndReturn_{i, t-1} + \beta_2 \times return_{i, t-1} +  
+<br>
 \beta_3 \times log(MV_{i, t-1}) + \beta_4 \times log(BM_{i, t-1}) + \epsilon_{i, t}$$
 
 

@@ -22,7 +22,8 @@ Starting from the 2015 annual report (and the 2017 semi-annual report), the Chin
   - Calculate text vector distances using cosine similarity: Denote the cosine similarity between comany $i$ and company $j$ at period $t$ as $CosineSimilarity(i, j)_t = v_{i,j} * v_{j,t}$
   - Calculate similarity scores: $Similarity(i,j)_t = Cosinesimilarity(i, j)_t - Median(\{k \in Companies_t: CosineSimilarity(i, k)_t})$, where $Companies_t$ is the set of companies at period $t$.
 - Define **industry peers**:
-  - For a focal company $i$, its industry peer at period $t$ is defined as: $IndustryPeer_{i, t} = \{j \in Companies_t: Min(Similarity(i, j)_t, Similarity(j, i)_t) > Threshold_t\}$
+  - For a focal company $i$, its industry peer at period $t$ is defined as: 
+  $$IndustryPeer_{i, t} = \{j \in Companies_t: Min(Similarity(i, j)_t, Similarity(j, i)_t) > Threshold_t\}$$
   - Use Shenwan Industry Classification (henceforth SWS Ind) to determine the value of $Threshold_t$: set $Threshold_t$ in a way that at period $t$, the number of industry pairs defined by text is approximate to that defined by SWS Ind
 
 The definition of industry peers here makes it more like a network than a classification. In fact, the classification proposed by Hoberg and Phillips (2016) was named Text-based Network Industries (TNIC for short).
@@ -153,14 +154,21 @@ I have demonstrated above that text-based industry classification is reliable. O
 
 The momentum effect is an usual market phenomenon by which asset prices follow an upward or downward trend for a long time. As a result, the past return of the asset, usually named momentum factor, can predict future return. Likewise, industry momentum is defined as the industry-level past return. Formally, we can define the momentum of company $i$ during period $t$ as the average stock return of its industry peers during period $t$. $IndReturn_{i, t} = \dfrac{1}{N}\(sum_{m} return_{m, t}\)$ where $m \in Peer_{i, t}$. Here I extend the concept of $Peer_{i, t}$ to conventional classifications so that two comapnies belonging to the same industry are automatically industry peers.
 
-As industry momentum can proxy for industry-level information, and the text-based industry classification defines industry associations that investors overlook, the text-based industry momentum will contain relevant industry-level information that slowly affects stock prices, resulting in a stronger momentum effect. This section presents the investigation.
+As industry momentum can proxy for industry-level information, and the text-based industry classification defines industry associations that investors overlook, the text-based industry momentum will contain relevant industry-level information that slowly affects stock prices, resulting in a stronger momentum effect. This section presents my investigation.
 
 #### 4.1 Fama-Macbeth Cross-sectional Regression
 
+First, I use Fama-Macbeth regressions to test different industry momentums on their explanatory power for stock returns. The two regressions are listed below. All return related variables are weekly returns, because in China researchers have concluded that momentum effect only exists in the short term —— in the long term it is reversal effect that predominates. $return_{i, t-1}$ is the weekly return of company $i$ at week $t-1$, which controls for individual stock momentum. $log(MV_{i, t-1})$ is the logarithmic of market value and $log(BM_{i, t-1})$ is the logarithmic of book-to-market ratio. In the first regression, I only include the industry momentum that lagged for 1 week, while in the second one industry momentum lagged for 1 to 4 weeks are all included, with the same set of control variables.
+To ensure that different coefficients are directly comparable, all independent variables are normalized to the corresponding z-scores.
 
-$$ return_{i, t} = \alpha + \beta_1 \times IndReturn_{i, t-1} + \beta_2 \times return_{i, t-1} +  
-<br>
-\beta_3 \times log(MV_{i, t-1}) + \beta_4 \times log(BM_{i, t-1}) + \epsilon_{i, t}$$
+$$ return_{i, t} = \alpha + \beta_1 \times IndReturn_{i, t-1} + \beta_2 \times return_{i, t-1} + \beta_3 \times log(MV_{i, t-1}) + \beta_4 \times log(BM_{i, t-1}) + \epsilon_{i, t}$$
+
+$$ return_{i, t} = \alpha + \beta_1 \times IndReturn_{i, t-1} + \beta_2 \times IndReturn_{i, t-2}+ \beta_3 \times IndReturn_{i, t-3}+ \beta_4 \times IndReturn_{i, t-4}+ Controls + \epsilon_{i, t}$$
+
+**table 8**
+<img src="images/fm1.png?raw=true"/>
+
+
 
 
 #### 4.2 Portfolio Backtest

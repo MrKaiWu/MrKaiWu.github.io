@@ -7,6 +7,8 @@ Conventional industry classifications typically categorize a company into one in
 
 ### 2. Methodology: Text-based Industry Classification
 
+My idea of using text data for industry reclassification originated from my internship at NLP tech startup. However, when I did my graduate thesis, Hoberg and Phillips (2016) already proposed a solution that had been widely accepted in academia. Hence, the following steps are based on their paper, with some steps adapted to Chinese language.
+
 Starting from the 2015 annual report (and the 2017 semi-annual report), the China Securities Regulatory Commission(henceforth CSRC) requires listed companies to disclose their business profiles. This section contains a large number of vocabulary related to the company's products and services. If the product & services descriptions of two companies are similar, they probably belong to the same industries. Based on this observation, my study uses text information to redo the industry classification. The specific steps are as follows:
 
 - Webscraping: annual and semi-annual reports are automatically collected from [elangshen](http://www.elangshen.com/)  
@@ -20,8 +22,11 @@ Starting from the 2015 annual report (and the 2017 semi-annual report), the Chin
   - Calculate text vector distances using cosine similarity: Denote the cosine similarity between comany <img src="/with_tex/tex/77a3b857d53fb44e33b53e4c8b68351a.svg?invert_in_darkmode&sanitize=true" align="middle" width="5.663225699999989pt" height="21.68300969999999pt"/> and company <img src="/with_tex/tex/36b5afebdba34564d884d347484ac0c7.svg?invert_in_darkmode&sanitize=true" align="middle" width="7.710416999999989pt" height="21.68300969999999pt"/> at period <img src="/with_tex/tex/4f4f4e395762a3af4575de74c019ebb5.svg?invert_in_darkmode&sanitize=true" align="middle" width="5.936097749999991pt" height="20.221802699999984pt"/> as <img src="/with_tex/tex/db70e305afe798d9b40621d1e3b7b295.svg?invert_in_darkmode&sanitize=true" align="middle" width="252.98774654999994pt" height="24.65753399999998pt"/>
   - Calculate similarity scores: <img src="/with_tex/tex/a7bc2ec4a6542130c508a726e19fdd79.svg?invert_in_darkmode&sanitize=true" align="middle" width="701.54818305pt" height="24.65753399999998pt"/>, where <img src="/with_tex/tex/e511736946f4f78b39e5df3aa9f18f68.svg?invert_in_darkmode&sanitize=true" align="middle" width="88.14102164999998pt" height="22.465723500000017pt"/> is the set of companies at period <img src="/with_tex/tex/4f4f4e395762a3af4575de74c019ebb5.svg?invert_in_darkmode&sanitize=true" align="middle" width="5.936097749999991pt" height="20.221802699999984pt"/>.
 - Define **industry peers**:
-  - For a focal company <img src="/with_tex/tex/77a3b857d53fb44e33b53e4c8b68351a.svg?invert_in_darkmode&sanitize=true" align="middle" width="5.663225699999989pt" height="21.68300969999999pt"/>, its industry peer at period <img src="/with_tex/tex/4f4f4e395762a3af4575de74c019ebb5.svg?invert_in_darkmode&sanitize=true" align="middle" width="5.936097749999991pt" height="20.221802699999984pt"/> is defined as: <img src="/with_tex/tex/5630490aa2b7844495b245a9acca4bf6.svg?invert_in_darkmode&sanitize=true" align="middle" width="677.3626216499999pt" height="24.65753399999998pt"/>
+  - For a focal company <img src="/with_tex/tex/77a3b857d53fb44e33b53e4c8b68351a.svg?invert_in_darkmode&sanitize=true" align="middle" width="5.663225699999989pt" height="21.68300969999999pt"/>, its industry peer at period <img src="/with_tex/tex/4f4f4e395762a3af4575de74c019ebb5.svg?invert_in_darkmode&sanitize=true" align="middle" width="5.936097749999991pt" height="20.221802699999984pt"/> is defined as: 
+  <p align="center"><img src="/with_tex/tex/23ea606565ea15d05030d20c6af4bf1b.svg?invert_in_darkmode&sanitize=true" align="middle" width="677.3626216499999pt" height="17.031940199999998pt"/></p>
   - Use Shenwan Industry Classification (henceforth SWS Ind) to determine the value of <img src="/with_tex/tex/76bc21ee6c4fa0dd1b406deb46edd637.svg?invert_in_darkmode&sanitize=true" align="middle" width="80.78226419999999pt" height="22.831056599999986pt"/>: set <img src="/with_tex/tex/76bc21ee6c4fa0dd1b406deb46edd637.svg?invert_in_darkmode&sanitize=true" align="middle" width="80.78226419999999pt" height="22.831056599999986pt"/> in a way that at period <img src="/with_tex/tex/4f4f4e395762a3af4575de74c019ebb5.svg?invert_in_darkmode&sanitize=true" align="middle" width="5.936097749999991pt" height="20.221802699999984pt"/>, the number of industry pairs defined by text is approximate to that defined by SWS Ind
+
+The definition of industry peers here makes it more like a network than a classification. In fact, the classification proposed by Hoberg and Phillips (2016) was named Text-based Network Industries (TNIC for short).
 
 SWS Ind is the most popular industry classification among finance practioners in China. This study thus uses SWS Ind as the major benchmark. CSRC has also published industry classification (denoted as CSRC Ind for short), which is the default choice in academic research. But as you will see later, CSRC Ind performs worse than SWS Ind.
 
@@ -117,4 +122,59 @@ There are 5,356 potential SWS Ind pairs. Listed below are the top 50 SWS Ind pai
 | 45. fishery & crop farming                           | 46. aerospace equipment & aviation equipment                   | 47. Internet media & marketing communications |                                                       |
 | 48. animal health & fishery                          | 49. general retail & commercial property management            | 50. medical service & biological product      |                                                       |
 
-#### 3.4 Identify the Most Related SWS Ind Pairs
+#### 3.4 Explanatory Power of Industry-level Variables
+
+Companies in the same industry should also exhibit similar patterns in a wide variety of variables, including valuation multiples (PE ratio, book to market ratio), profitability (return on asset, return on equity), operating efficiency (asset turnover ratio), growth potential (annual sales growth), debt capacity (debt ratio), R&D expense ratio and analyst forecasted growth. If a classification is indeed well-defined, then an industry-level variable aggregated from the composite companies should have great explanatory power on company-level variables, hence a relatively high regression R-squared.
+
+I used the following company-wise regression to compare CSRC Ind, SWS Ind and text-based industry classification. <img src="/with_tex/tex/9f001922ea8a221a285fe3739db3125b.svg?invert_in_darkmode&sanitize=true" align="middle" width="59.40960959999999pt" height="22.831056599999986pt"/> can be any of the variables mentioned above, and <img src="/with_tex/tex/2fd1c05072bf4d652405fabb3a9ea385.svg?invert_in_darkmode&sanitize=true" align="middle" width="91.81516079999999pt" height="22.831056599999986pt"/> is the corresponding industry average excluding company <img src="/with_tex/tex/77a3b857d53fb44e33b53e4c8b68351a.svg?invert_in_darkmode&sanitize=true" align="middle" width="5.663225699999989pt" height="21.68300969999999pt"/>:
+<img src="/with_tex/tex/77f7ad09b81e39f0db322174ea8c5cab.svg?invert_in_darkmode&sanitize=true" align="middle" width="447.40356705pt" height="22.831056599999986pt"/>
+
+Table 7 summarizes all the adjusted R-squared obtained from the regressions. SWS Ind and TNIC both win 4 battles, and tie in one. CSRC Ind fails to win even one battle. Notably, although the SWS Ind is the most popular one to financial analysts, it falls behind text-based industry classification in the test where analyst forecasted growth is the variable of interest. Such a result seems to indicate that analysts will identify comparable companies based on their own understanding, rather than fully relying on established industry classifications.
+
+**Table 7** Regress Company-level Variable on Industry-level Variable: R-squared results
+
+| Variables       | CSRC Ind | SWS Ind | TNIC   | # Samples |
+|-----------------|----------|---------|--------|-----------|
+| _EP_              | 18.09%   | **18.25%**  | 11.17% | 9139      |
+| _BM_              | 26.55%   | **27.80%**  | **27.80%** | 9139      |
+| _ROA_             | 8.71%    | 8.38%   | **12.38%** | 9139      |
+| _ROE_             | 6.53%    | 6.38%   | **7.42%**  | 9113      |
+| _TURNOVER_        | 27.21%   | **29.83%**  | 27.93% | 9139      |
+| _GROWTH_          | 5.68%    | **6.00%**   | 3.63%  | 9139      |
+| _DEBT_            | 22.72%   | 24.20%  | **27.61%** | 9139      |
+| _RD EXPENSE_      | 41.98%   | **44.20%**  | 43.08% | 9139      |
+| _FORECAST GROWTH_ | 5.68%    | 7.00%   | **8.61%**  | 6314      |
+
+_Note: 1. EP takes the reciprocal of PE ratio to account for negative values; 2. Bold format indicates the best among three_
+
+
+### 4. Text-based Industry Momentum
+
+I have demonstrated above that text-based industry classification is reliable. Obviously, it can capture some of the industry characteristics which is not directly reflected in a conventional classification scheme. To illustrate, a real estate company with food manufacturing taking up 25% percent of its yearly revenue is categorized to real estate industry, but its text-based industry peers will include many food manufactuers. Investors, subjected to limited attention from a behavioral finance perspective, tend to ignore this fact.
+
+The momentum effect is an usual market phenomenon by which asset prices follow an upward or downward trend for a long time. As a result, the past return of the asset, usually named momentum factor, can predict future return. Likewise, industry momentum is defined as the industry-level past return. Formally, we can define the momentum of company <img src="/with_tex/tex/77a3b857d53fb44e33b53e4c8b68351a.svg?invert_in_darkmode&sanitize=true" align="middle" width="5.663225699999989pt" height="21.68300969999999pt"/> during period <img src="/with_tex/tex/4f4f4e395762a3af4575de74c019ebb5.svg?invert_in_darkmode&sanitize=true" align="middle" width="5.936097749999991pt" height="20.221802699999984pt"/> as the average stock return of its industry peers during period <img src="/with_tex/tex/4f4f4e395762a3af4575de74c019ebb5.svg?invert_in_darkmode&sanitize=true" align="middle" width="5.936097749999991pt" height="20.221802699999984pt"/>. <img src="/with_tex/tex/98d1112af5046600479b1e1e4eb1e05c.svg?invert_in_darkmode&sanitize=true" align="middle" width="248.67675525pt" height="43.42856099999997pt"/> where <img src="/with_tex/tex/4d487db9cbf0073393c2e694b27a95dd.svg?invert_in_darkmode&sanitize=true" align="middle" width="83.60643059999998pt" height="22.465723500000017pt"/>. Here I extend the concept of <img src="/with_tex/tex/c0e9e9c0e673d72eba284423f620f7b9.svg?invert_in_darkmode&sanitize=true" align="middle" width="49.08219194999999pt" height="22.465723500000017pt"/> to conventional classifications so that two comapnies belonging to the same industry are automatically industry peers.
+
+As industry momentum can proxy for industry-level information, and the text-based industry classification defines industry associations that investors overlook, the text-based industry momentum will contain relevant industry-level information that slowly affects stock prices, resulting in a stronger momentum effect. This section presents my investigation.
+
+#### 4.1 Fama-Macbeth Cross-sectional Regression
+
+First, I use Fama-Macbeth regressions to test different industry momentums on their explanatory power for stock returns. The two regressions are listed below. All return related variables are weekly returns, because in China researchers have concluded that momentum effect only exists in the short term —— in the long term it is reversal effect that predominates. <img src="/with_tex/tex/5b252aaea9aa5d3cf3b6795eda649b83.svg?invert_in_darkmode&sanitize=true" align="middle" width="78.96068729999999pt" height="20.221802699999984pt"/> is the weekly return of company <img src="/with_tex/tex/77a3b857d53fb44e33b53e4c8b68351a.svg?invert_in_darkmode&sanitize=true" align="middle" width="5.663225699999989pt" height="21.68300969999999pt"/> at week <img src="/with_tex/tex/92b263e78e9de2e962015cb0cf34e0d1.svg?invert_in_darkmode&sanitize=true" align="middle" width="34.24649744999999pt" height="21.18721440000001pt"/>, which controls for individual stock momentum. <img src="/with_tex/tex/b3f650fd494810fed58aa18b25120452.svg?invert_in_darkmode&sanitize=true" align="middle" width="92.91017009999999pt" height="24.65753399999998pt"/> is the logarithmic of market value and <img src="/with_tex/tex/e4ce64e9d41438a3546ac6aa49f14c9a.svg?invert_in_darkmode&sanitize=true" align="middle" width="94.82232044999999pt" height="24.65753399999998pt"/> is the logarithmic of book-to-market ratio. In the first regression, I only include the industry momentum that lagged for 1 week, while in the second one industry momentum lagged for 1 to 4 weeks are all included, with the same set of control variables.
+To ensure that different coefficients are directly comparable, all independent variables are normalized to the corresponding z-scores.
+
+<p align="center"><img src="/with_tex/tex/8520fc92e4b856a64d0a4423be4af635.svg?invert_in_darkmode&sanitize=true" align="middle" width="699.45258405pt" height="17.031940199999998pt"/></p>
+
+<p align="center"><img src="/with_tex/tex/570478dcf69d4672b3ea6c403d037d65.svg?invert_in_darkmode&sanitize=true" align="middle" width="821.48516505pt" height="16.1187015pt"/></p>
+
+Table 8 summarizes the results from the first regression. Ceteris paribus, the text-based industry momentum generates the largest coefficient, t-statistics and adjusted R-squared. To my expectation, CSRC Industry Momentum is the least significant. Notably, controlling for industry momentum, the coefficients for individual stock momentum are all significantly negative, meaning that reversal is stronger than momentum.
+
+**table 8**
+<img src="/images/fm1.png?raw=true"/>
+
+
+**table 9**
+<img src="/images/fm2.png?raw=true"/>
+
+
+
+
+#### 4.2 Portfolio Backtest

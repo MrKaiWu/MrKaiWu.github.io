@@ -166,7 +166,7 @@ To ensure that different coefficients are directly comparable, all independent v
 <p align="center"><img src="/with_tex/tex/570478dcf69d4672b3ea6c403d037d65.svg?invert_in_darkmode&sanitize=true" align=middle width=821.48516505pt height=16.1187015pt/></p>
 
 **table 8**
-<img src="images/fm1?raw=true"/>
+<img src="/images/fm1?raw=true"/>
 
 
 

@@ -1,9 +1,9 @@
 ## Text-based Industry Reclassification and Industry Momentum
 
-**Project Overview:** This is my graduate thesis at _Renmin University of China_, completed during the spring of 2019. I built a new industry classification for China's listed companies using product & services descriptions disclosed in annual/semi-annual reports. This classification performed well as compared to conventional classifications. Consistent with a behavioral finance perspective, the new industry momentum factor, calculated as the average return of industy peers, was proved to have much stronger predictive power of future stock returns than conventional industry momentum factor.
+**Project Overview:** This is the abridged version of my graduate thesis at _Renmin University of China_, completed during the spring of 2019. I built a new industry classification for China's listed companies using product & services descriptions disclosed in annual/semi-annual reports. This classification performed well as compared to conventional classifications. Consistent with a behavioral finance perspective, the new industry momentum factor, calculated as the average past return of industy peers, was proved to have much stronger predictive power for future stock returns than conventional industry momentum factor.
 
 ### 1. Motivation
-Conventional industry classifications typically categorize a company into one industry. However, in China a large proportion of listed companies have their business spanned across several industries or sectors. Investors who rely on conventional classifications thus tend to ignore industry-level information relevant to a focal company's secondary business, resulting in delayed incorporation of such information into stock prices — a phenomenon called **limited attention** in behavioral finance literature. Ideally, capturing the information that investors overlook would help better predict future stock returns.
+Conventional industry classifications typically categorize a company into one industry. However, in China a large proportion of listed companies have their business spanned across several industries or sectors. Investors who rely on conventional classifications thus tend to ignore industry-level information relevant to a focal company's secondary business, resulting in delayed incorporation of such less invisible information into stock prices — a phenomenon called **limited attention** in behavioral finance literature. Ideally, capturing the information that investors overlook would help better predict future stock returns.
 
 ### 2. Methodology: Text-based Industry Classification
 
@@ -163,18 +163,74 @@ To ensure that different coefficients are directly comparable, all independent v
 
 <p align="center"><img src="/with_tex/tex/8520fc92e4b856a64d0a4423be4af635.svg?invert_in_darkmode&sanitize=true" align="middle" width="699.45258405pt" height="17.031940199999998pt"/></p>
 
-<p align="center"><img src="/with_tex/tex/570478dcf69d4672b3ea6c403d037d65.svg?invert_in_darkmode&sanitize=true" align="middle" width="821.48516505pt" height="16.1187015pt"/></p>
+<p align="center"><img src="/with_tex/tex/d2d3697811f0e3a1c677c6c860b7f116.svg?invert_in_darkmode&sanitize=true" align="middle" width="438.1886189999999pt" height="18.905967299999997pt"/></p>
 
 Table 8 summarizes the results from the first regression. Ceteris paribus, the text-based industry momentum generates the largest coefficient, t-statistics and adjusted R-squared. To my expectation, CSRC Industry Momentum is the least significant. Notably, controlling for industry momentum, the coefficients for individual stock momentum are all significantly negative, meaning that reversal is stronger than momentum.
 
-**table 8**
+**Table 8** Fama-Macbeth Regression: including one industry momentum
 <img src="/images/fm1.png?raw=true"/>
 
+Table 9 shows the results from the second regression. Industry momentums lagged for 1 week are still significantly positive, but the other industry momentums are not. Text-based industry momentum is still the strongest.
 
-**table 9**
+**Table 9** Fama-Macbeth Regression: including four industry momentums
 <img src="/images/fm2.png?raw=true"/>
 
-
-
-
 #### 4.2 Portfolio Backtest
+
+In this section, I implement portfolio backtests based on industry momentum factors. The test procedure originates from Jegadeesh and Titman (1993) which was the first paper to consolidate the findings of momentum effect. Sort all the stocks by their industry momentums during the past <img src="/with_tex/tex/8eb543f68dac24748e65e2e4c5fc968c.svg?invert_in_darkmode&sanitize=true" align="middle" width="10.69635434999999pt" height="22.465723500000017pt"/> weeks, namely the formation weeks, and divide them into ten groups. For a newly formed group ranging from 1 to 10, we buy all the stocks with equal weights and hold for K weeks as the holding period. This process repeats at the begining of each week, so that at week <img src="/with_tex/tex/4f4f4e395762a3af4575de74c019ebb5.svg?invert_in_darkmode&sanitize=true" align="middle" width="5.936097749999991pt" height="20.221802699999984pt"/>, each portfolios consists of K sub-portfolios which are formed during week <img src="/with_tex/tex/97c4a0a58814c185844c481149e84a94.svg?invert_in_darkmode&sanitize=true" align="middle" width="41.16429404999999pt" height="22.465723500000017pt"/> to week <img src="/with_tex/tex/92b263e78e9de2e962015cb0cf34e0d1.svg?invert_in_darkmode&sanitize=true" align="middle" width="34.24649744999999pt" height="21.18721440000001pt"/>. By convention, the first group which corresponds to the smallest industry momentum is called the Short Portfolio, and the 10th group is called the Long Portfolio.
+
+The above backtest is conducted for the CSRC, SWS as well as text-based industry momentums, respectively, with the formation weeks <img src="/with_tex/tex/8eb543f68dac24748e65e2e4c5fc968c.svg?invert_in_darkmode&sanitize=true" align="middle" width="10.69635434999999pt" height="22.465723500000017pt"/> and the holding weeks <img src="/with_tex/tex/d6328eaebbcd5c358f426dbea4bdbf70.svg?invert_in_darkmode&sanitize=true" align="middle" width="15.13700594999999pt" height="22.465723500000017pt"/> varying between 1 to 12.  The image below compares the backtesting results, where the vertical axis is the difference of annualized returns between the Long and the Short Portfolios. As we can see, the text-based industry momentum (right most) is the absolute winner.
+
+<img src="/images/3d.png?raw=true"/>
+
+Table 10 compares the backtesting outcomes of text-based industry momentum with SWS momentum, with a 3-week formation period and various holding periods. "Annualized excess return/Long(Short)" is the annualized return of the Long(Short) Portfolio minus equal-weighted annualized return of the whole stock universe. "Long - Short" is the difference of annualized returns between the Long and the Short Portfolio. "FF 3 factor alpha" is the intercept term obtained when regressing monthly returns of Long-short portfolio on monthly Fama-French 3 factors, which represents the risk premium after controling for systematic risks. "Alpha t-statistics" is the t-stat of the intercept term. The last metric, factor monotonicity, is the rank correlation coefficient between each portfolio's group number (1 to 10) and the final netvalue. This metric is based on my argument that an ideal stock factor should have considerable postive/negative correlation with future stock returns. Hence, the desirbale factor monotonicity should have an absolute value close or equal to 1.
+
+**Table 10** Performance Comparison in Jegadeesh and Titman Test
+<img src="/images/jk.png?raw=true"/>
+_Note: \*\*\*, \*\* and \* indicate significance levels of 1%, 5% and 10%_
+
+As exhibited in Table 10, the text-based industry momentum is 100% dominant over SWS Ind momentum. The factor monotonicity score is the most impressive —— the monotonicity of 10 portfolios does not decay even when the holding period is raised to 10 weeks. Also worth mentioning is the FF 3 factor alpha. The monthly alpha when the holding period is 1-week is 1.04% which is significant at 10% level. The fact that it is not quite significant may be due to the lack of enough samples in regression. Recall that we use monthly return for this regression, which means the number of available observations reduces to no more than a quater of the original. Therefore, a 10% significance level here is somehow acceptable.
+
+The last image shows the equity curves for different types of industry momentums, with the formation period and the holding period set to be optimal. Again, the text-based industry momentum wins. The lowest curve corresponds to the backtest that sorts stocks by stock-level momentum. Its negative slope casts doubts on the existence of stock momentum effect in China's A-share Market.
+
+<img src="/images/ind_momentum_cover.png?raw=true"/>
+
+
+
+#### 4.2 Mechanism Test
+
+To my expectation, the text-based industry momentum effect is stronger. I have argued that it is because of investors' inattention to relevant industry information, which is caused by the conventional classification that categorizes a multi-sector company to a single industry. Since my text-based classification is designed to overcome this drawback, it captures the information less visible investors, and the corresponding industry momentum can thus better predict future stock returns. 
+
+Here I give an indirect test of the proposed mechanism. I decompose the text-based industry momentum into two parts. The first part is the visible momentum, which is the average past return of text-based industry peers that are also peers under SWS Ind. The second part is the invisible momentum, which is defined using text-based industry peers that are not identified as peers under SWS Ind. I use these two industry momentums as the independent variables in place of the orginal industry momentum, and repeat the two regressions listed in section **4.1**. The result shows that the coefficient of invisible momentum is 50% larger, which to some extent supports the behaviroal finance perspective. Here for space consideration, I only present the result of the first regression in Table 11.
+
+**Table 11** Fama-Macbeth Regression: Invisible/Visible Momentum
+<img src="/images/mechanism.png?raw=true"/>
+
+
+
+### 5. Concluding Remarks
+- Text-based industry classification is practical in China's A-share Market. It is able to capture industry associations that are not direclty obtainable using conventional classifications, which fits the reality that most big companies have diversified business across different industries. It is not inferior to the most popular classification schema —— Shenwan Industry Classification  —— in a direct comparison. 
+- Industry momentum effect exists in China's market, but the effect lasts for weeks rather than for months. Text-based industry momentum is significantly stronger than industry momentum defined using conventional classification schemes.
+- Limited investor attention is the potential cause of the stronger text-based industry momentum effect.
+
+As corporate reports will continue to be released, we can collect more data to further test the robustness of these findings.
+
+
+### _References:_
+
+_I only list publications that are directly related to this post. My actual graudate thesis actually prsents much more items._
+
+1. Bhojraj S, Lee C M C, Oler D K. What's my line? A comparison of industry classification schemes for capital market research[J]. Journal of Accounting Research, 2003, 41(5): 745-774.
+2.	Bhojraj S, Lee C M C. Who is my peer? A valuation‐based approach to the selection of comparable firms[J]. Journal of accounting research, 2002, 40(2): 407-439.
+3.	Cohen L, Frazzini A. Economic links and predictable returns[J]. The Journal of Finance, 2008, 63(4): 1977-2011.
+4.	Cohen L, Lou D. Complicated firms[J]. Journal of financial economics, 2012, 104(2): 383-400.
+5.	Hoberg G, Maksimovic V. Redefining financial constraints: A text-based analysis[J]. The Review of Financial Studies, 2014, 28(5): 1312-1352.
+6.	Hoberg G, Phillips G M. Text-based industry momentum[J]. Journal of Financial and Quantitative Analysis, 2018, 53(6): 2355-2388.
+7.	Hoberg G, Phillips G. Conglomerate industry choice and product language[J]. Management Science, 2017, 64(8): 3735-3755.
+8.	Hoberg G, Phillips G. Product market synergies and competition in mergers and acquisitions: A text-based analysis[J]. The Review of Financial Studies, 2010, 23(10): 3773-3811.
+9.	Hoberg G, Phillips G. Text-based network industries and endogenous product differentiation[J]. Journal of Political Economy, 2016, 124(5): 1423-1465.
+10.	Jegadeesh N, Titman S. Returns to buying winners and selling losers: Implications for stock market efficiency[J]. The Journal of finance, 1993, 48(1): 65-91.
+11.	Lee C M C, Ma P, Wang C C Y. Search-based peer firms: Aggregating investor perceptions through internet co-searches[J]. Journal of Financial Economics, 2015, 116(2): 410-431.
+12.	Lee C M C, Sun S T, Wang R, et al. Technological links and predictable returns[J]. Journal of Financial Economics, 2018.
+13.	Li N. Who Are My Peers? Labor Market Peer Firms Through Employees' Internet Co-Search Patterns[J]. Labor Market Peer Firms Through Employees' Internet Co-Search Patterns (November 1, 2017). Rotman School of Management Working Paper, 2017 (2558271).
+14.	Moskowitz T J, Grinblatt M. Do industries explain momentum?[J]. The Journal of finance, 1999, 54(4): 1249-1290.

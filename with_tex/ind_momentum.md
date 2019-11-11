@@ -158,7 +158,7 @@ As industry momentum can proxy for industry-level information, and the text-base
 #### 4.1 Fama-Macbeth Cross-sectional Regression
 
 
-<p align="center"><img src="/with_tex/tex/9535388ca2bbd675fff322c27c16a43c.svg?invert_in_darkmode&sanitize=true" align=middle width=699.45258405pt height=17.031940199999998pt/></p>
+<p align="center"><img src="/with_tex/tex/b1ca645c4292f02e71ca688210a0ff2b.svg?invert_in_darkmode&sanitize=true" align=middle width=735.1367578499999pt height=17.031940199999998pt/></p>
 
 
 #### 4.2 Portfolio Backtest

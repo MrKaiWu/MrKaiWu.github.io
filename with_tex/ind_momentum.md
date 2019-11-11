@@ -3,7 +3,7 @@
 **Project Overview:** This is the abridged version of my graduate thesis at _Renmin University of China_, completed during the spring of 2019. I built a new industry classification for China's listed companies using product & services descriptions disclosed in annual/semi-annual reports. This classification performed well as compared to conventional classifications. Consistent with a behavioral finance perspective, the new industry momentum factor, calculated as the average past return of industy peers, was proved to have much stronger predictive power for future stock returns than conventional industry momentum factor.
 
 ### 1. Motivation
-Conventional industry classifications typically categorize a company into one industry. However, in China a large proportion of listed companies have their business spanned across several industries or sectors. Investors who rely on conventional classifications thus tend to ignore industry-level information relevant to a focal company's secondary business, resulting in delayed incorporation of such information into stock prices — a phenomenon called **limited attention** in behavioral finance literature. Ideally, capturing the information that investors overlook would help better predict future stock returns.
+Conventional industry classifications typically categorize a company into one industry. However, in China a large proportion of listed companies have their business spanned across several industries or sectors. Investors who rely on conventional classifications thus tend to ignore industry-level information relevant to a focal company's secondary business, resulting in delayed incorporation of such less invisible information into stock prices — a phenomenon called **limited attention** in behavioral finance literature. Ideally, capturing the information that investors overlook would help better predict future stock returns.
 
 ### 2. Methodology: Text-based Industry Classification
 
@@ -165,14 +165,16 @@ To ensure that different coefficients are directly comparable, all independent v
 
 <p align="center"><img src="/with_tex/tex/570478dcf69d4672b3ea6c403d037d65.svg?invert_in_darkmode&sanitize=true" align=middle width=821.48516505pt height=16.1187015pt/></p>
 
+<p align="center"><img src="/with_tex/tex/d2d3697811f0e3a1c677c6c860b7f116.svg?invert_in_darkmode&sanitize=true" align=middle width=438.1886189999999pt height=18.905967299999997pt/></p>
+
 Table 8 summarizes the results from the first regression. Ceteris paribus, the text-based industry momentum generates the largest coefficient, t-statistics and adjusted R-squared. To my expectation, CSRC Industry Momentum is the least significant. Notably, controlling for industry momentum, the coefficients for individual stock momentum are all significantly negative, meaning that reversal is stronger than momentum.
 
-**Table 8**
+**Table 8** Fama-Macbeth Regression: including one industry momentum
 <img src="/images/fm1.png?raw=true"/>
 
 Table 9 shows the results from the second regression. Industry momentums lagged for 1 week are still significantly positive, but the other industry momentums are not. Text-based industry momentum is still the strongest.
 
-**Table 9**
+**Table 9** Fama-Macbeth Regression: including four industry momentums
 <img src="/images/fm2.png?raw=true"/>
 
 #### 4.2 Portfolio Backtest
@@ -185,7 +187,7 @@ The above backtest is conducted for the CSRC, SWS as well as text-based industry
 
 Table 10 compares the backtesting outcomes of text-based industry momentum with SWS momentum, with a 3-week formation period and various holding periods. "Annualized excess return/Long(Short)" is the annualized return of the Long(Short) Portfolio minus equal-weighted annualized return of the whole stock universe. "Long - Short" is the difference of annualized returns between the Long and the Short Portfolio. "FF 3 factor alpha" is the intercept term obtained when regressing monthly returns of Long-short portfolio on monthly Fama-French 3 factors, which represents the risk premium after controling for systematic risks. "Alpha t-statistics" is the t-stat of the intercept term. The last metric, factor monotonicity, is the rank correlation coefficient between each portfolio's group number (1 to 10) and the final netvalue. This metric is based on my argument that an ideal stock factor should have considerable postive/negative correlation with future stock returns. Hence, the desirbale factor monotonicity should have an absolute value close or equal to 1.
 
-**Table 10**
+**Table 10** Performance Comparison in Jegadeesh and Titman Test
 <img src="/images/jk.png?raw=true"/>
 _Note: \*\*\*, \*\* and \* indicate significance levels of 1%, 5% and 10%_
 
@@ -196,8 +198,17 @@ The last image shows the equity curves for different types of industry momentums
 <img src="/images/ind_momentum_cover.png?raw=true"/>
 
 
-**Table 11**
+
+#### 4.2 Mechanism Test
+
+To my expectation, the text-based industry momentum effect is stronger. I have argued that it is because of investors' inattention to relevant industry information, which is caused by the conventional classification that categorizes a multi-sector company to a single industry. Since my text-based classification is designed to overcome this drawback, it captures the information less visible investors, and the corresponding industry momentum can thus better predict future stock returns. 
+
+Here I give an indirect test of the proposed mechanism. I decompose the text-based industry momentum into two parts. The first part is the visible momentum, which is the average past return of text-based industry peers that are also peers under SWS Ind. The second part is the invisible momentum, which is defined using text-based industry peers that are not identified as peers under SWS Ind. I use these two industry momentums as the independent variables in place of the orginal industry momentum, and repeat the two regressions listed in section **4.1**. The result shows that the coefficient of invisible momentum is 50% larger, which to some extent supports the behaviroal finance perspective. Here for space consideration, I only present the result of the first regression in Table 11.
+
+**Table 11** Fama-Macbeth Regression: Invisible/Visible Momentum
 <img src="/images/mechanism.png?raw=true"/>
 
 
+
+### Conclusion
 

@@ -18,17 +18,33 @@ The stock selection was performed on a walk-forward basis. At each rebalance dat
   - I was given more than 60 stock factors, and the most simple linear model tended to perform poorly with so many independent variables. Hence I added the L1 regularization to introduce some sparsity. All else equal, I used the linear model instead of machine learning algorithms to repeat the train-validation-predict process, and used the corresponding backtest performance as a benchmark. 
   - That being said, the backtesting module used several major equity indexes as benchmark.
 #### Ensemble model
-  As we can see in the **Machine Learnig configurations** section, there are so many alternative choices. In fact, in my test, I failed to find such thing as the most perfect configuration. Some were better as with absolute return, others exhibited lower volatility and drawdown. This reminded me of **Ensemble Learning**, a machine learnig paradigm aggregating a group of weak learners to achive a better predictive performance. During my internship, I figured out a way to combine the results from models varying in the learning algorithm, objective and datasets, which obtained a better predictive performance and backtesting outcomes than any configuration alone. In this report, the results I present was achieved by fixing classification as the default learning objective and altering algorithms and datasets(different time windows/subsamples). The algorithms I chose include LightGBM(_LGB_), vanilla feed-forward neural networks (_ANN_) and networks with LSTM layers(_LSTM_). I used two time windows, namely 2 years and 1 year, denoted as _100_ and _50_ respectively because they coresponded to data from 100 and 50 trading days. I labeled the data in three ways which corresponded to three subsamples: 1) label top 20% stocks as postive and bottom 20% as negative(_TB_); 2) top 20% as postive and randomly selected 20% as negative(_TR_); 3) bottom 20% as negative and randomly selected 20% as postive(_RB_).
+  As we can see in the **Machine Learnig configurations** section, there are so many alternative choices. In fact, in my test, I failed to find such thing as the most perfect configuration. Some were better as with absolute return, others exhibited lower volatility and drawdown. This reminded me of **Ensemble Learning**, a machine learnig paradigm aggregating a group of weak learners to achive a better predictive performance. During my internship, I figured out a way to combine the results from models varying in the learning algorithm, objective and datasets, which obtained a better predictive performance and backtesting outcomes than any configuration alone. In this report, the results I present was achieved by fixing classification as the default learning objective and altering algorithms and datasets(different time windows/subsamples). The algorithms I chose include LightGBM(_LGB_), vanilla feed-forward neural networks (_ANN_) and networks with LSTM layers(_LSTM_). I used two time windows, namely 2 years and 1 year, denoted as _100_ and _50_ respectively because they coresponded to data from 100 and 50 trading days. I labeled the data in three ways which corresponded to three subsamples: 1) label top 20% stocks as postive and bottom 20% as negative(_TB_); 2) top 20% as postive and randomly selected 20% as negative(_TR_); 3) bottom 20% as negative and randomly selected 20% as postive(_RB_). Taken together, I set up 3 x 2 x 3 = 18 different configurations.
 
 ### Main Findings
-1. Models with different configurations have limited correlation. In particular, the predicted scores of _TR_ models are negatively correlated with _TB_ and _RB_ models. 
+1. Models with different configurations are far from perfectly correlated. In particular, the predicted scores of _TR_ models are negatively correlated with _TB_ and _RB_ models. Models that differ in the underlying algorithm also have limited correlation ranging from 0.5 to 0.8. This fact to some extent is favorable to the use of ensemble paradigm because the low variance of ensemble learning relies on limited correlation between constituent weak learners.
 
-To be continued
+2. Choice of training sets has a significant impact on the outcome. 
 
-<img src="/images/tb.png?raw=true"/>
+The figures below present the results of factor backtest when different subsamples are used. Here the "factor" comes from the time series of ML-predicted scores: by using a bunch of stock factors as features for machine learning, we are basically converting multiple factors into one single factor. Stocks are sorted by this factor into 10 groups on a regular basis and portfolio backtests are conducted in each group. In each figure, the upper part presents the equity curves of ten portfolios, and the lower part presents the annualized returns of each portfolio.
+
+The _TB_ model, which uses data from stocks with the top 20% and bottom 20% performance cross-sectionally, has the best performance in the magnitude of long and short returns. It is not surprsing, because this way of using data results in relatively high signal-to-noise ratio, and is somewhat the default setting practioners use. The test on _RB_ model shows that the short portfolio (the 10-th group) has -38.69% yearly return, which is impressive. What's more, the monotonicity of ten portfolios are excellent. _TR_ model does not give a equally good performance, but the monotonicity of ten portfolio still holds with few exceptions. What is surprisinig is that, when combining the factors from _TR_ and _RB_ into one, 
+
+to be continued
+
+**Figure 1** _TB_—long return: 46%, short return: -43.56%
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<img src="/images/tb.png?raw=true"/>
+
+
+**Figure 2** _TR_—long return: 26.20%, short return: 7.06%
 <img src="/images/tr.png?raw=true"/>
+
+**Figure 3** _RB_-long return 36.44 short return: -38.69%
 <img src="/images/rb.png?raw=true"/>
+
+**Figure 4** Combininig _TR_ with _RB_—long return: 46.51%, short return: -34.11%
 <img src="/images/trrb.png?raw=true"/>
+
+
 <img src="/images/metrics.png?raw=true"/>
 <img src="/images/backtest.png?raw=true"/>
 

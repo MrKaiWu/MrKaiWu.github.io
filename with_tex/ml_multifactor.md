@@ -18,8 +18,18 @@ The stock selection was performed on a walk-forward basis. At each rebalance dat
   - I was given more than 60 stock factors, and the most simple linear model tended to perform poorly with so many independent variables. Hence I added the L1 regularization to introduce some sparsity. All else equal, I used the linear model instead of machine learning algorithms to repeat the train-validation-predict process, and used the corresponding backtest performance as a benchmark. 
   - That being said, the backtesting module used several major equity indexes as benchmark.
 #### Ensemble model
-  As we can see in the **Machine Learnig configurations** section, there are so many alternative choices. In fact, in my test, I failed to find such thing as the most perfect configuration. Some were better as with absolute return, others exhibited lower volatility and drawdown. This reminded me of **Ensemble Learning**, a machine learnig paradigm aggregating a group of weak learners to achive a better predictive performance. During my internship, I figured out a way to combine the results from models varying in the learning algorithm, objective and datasets, which obtained a better predictive performance and backtesting outcomes than any configuration alone. In this report, the results I present was achieved by fixing classification as the default learning objective and altering algorithms and datasets(different time windows/subsamples). The algorithms I chose include LightGBM, vanilla feed-forward neural networks (ANN) and networks with LSTM layers(LSTM). I used two time windows, namely 2 years and 1 year. I labeled the data in three ways which corresponded to three subsamples: 1) label top 20% stocks as postive and bottom 20% as negative(TB); 2) top 20% as postive and randomly selected 20% as negative(TR); 3) bottom 20% as negative and randomly selected 20% as postive(RB).
+  As we can see in the **Machine Learnig configurations** section, there are so many alternative choices. In fact, in my test, I failed to find such thing as the most perfect configuration. Some were better as with absolute return, others exhibited lower volatility and drawdown. This reminded me of **Ensemble Learning**, a machine learnig paradigm aggregating a group of weak learners to achive a better predictive performance. During my internship, I figured out a way to combine the results from models varying in the learning algorithm, objective and datasets, which obtained a better predictive performance and backtesting outcomes than any configuration alone. In this report, the results I present was achieved by fixing classification as the default learning objective and altering algorithms and datasets(different time windows/subsamples). The algorithms I chose include LightGBM(_LGB_), vanilla feed-forward neural networks (_ANN_) and networks with LSTM layers(_LSTM_). I used two time windows, namely 2 years and 1 year, denoted as _100_ and _50_ respectively because they coresponded to data from 100 and 50 trading days. I labeled the data in three ways which corresponded to three subsamples: 1) label top 20% stocks as postive and bottom 20% as negative(_TB_); 2) top 20% as postive and randomly selected 20% as negative(_TR_); 3) bottom 20% as negative and randomly selected 20% as postive(_RB_).
 
-### Findings
+### Main Findings
+1. Models with different configurations have limited correlation. In particular, the predicted scores of _TR_ models are negatively correlated with _TB_ and _RB_ models. 
+
+To be continued
+
+<img src="/images/tb.png?raw=true"/>
+<img src="/images/tr.png?raw=true"/>
+<img src="/images/rb.png?raw=true"/>
+<img src="/images/trrb.png?raw=true"/>
+<img src="/images/metrics.png?raw=true"/>
+<img src="/images/backtest.png?raw=true"/>
 
 

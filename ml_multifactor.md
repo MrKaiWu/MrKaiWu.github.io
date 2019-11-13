@@ -42,7 +42,7 @@ The _TB_ model, which uses the data of stocks with the top 20% and bottom 20% pe
 **Figure 2** _TR_—long return: 26.20%, short return: 7.06%
 <img src="/images/tr.png?raw=true"/>
 
-**Figure 3** _RB_-long return 36.44 short return: -38.69%
+**Figure 3** _RB_-long return 36.44, short return: -38.69%
 <img src="/images/rb.png?raw=true"/>
 
 **Figure 4** Combininig _TR_ with _RB_—long return: 46.51%, short return: -34.11%

@@ -24,11 +24,11 @@ We can also think of the time-series of scores as a composite factor originated 
 As we can see in the **Machine Learnig configurations** section, there are so many alternative choices. In fact, in my test, I failed to find such thing as the most perfect configuration. Some were better as with absolute return, others exhibited lower volatility and drawdown. This reminded me of **Ensemble Learning**, a machine learnig paradigm aggregating a group of weak learners to achive a better predictive performance. During my internship, I figured out a way to combine the results from models varying in the learning algorithm, objective and datasets, which obtained a better predictive performance and backtesting outcomes than any configuration alone. In this report, the results I present was achieved by fixing classification as the default learning objective and altering algorithms and datasets(different time windows/subsamples). The algorithms I chose include LightGBM(_LGB_), vanilla feed-forward neural networks (_ANN_) and networks with LSTM layers(_LSTM_). I used two time windows, namely 2 years and 1 year, denoted as _100_ and _50_ respectively because they coresponded to data from 100 and 50 trading days. I labeled the data in three ways which corresponded to three subsamples: 1) label top 20% stocks as postive and bottom 20% as negative(_TB_); 2) top 20% as postive and randomly selected 20% as negative(_TR_); 3) bottom 20% as negative and randomly selected 20% as postive(_RB_). Taken together, I set up 3 x 2 x 3 = 18 different configurations.
 
 ### 3. Findings
-1. Models with different configurations are far from perfectly correlated. 
+- Models with different configurations are far from perfectly correlated. 
 
 In particular, the predicted scores of _TR_ models are negatively correlated with _TB_ and _RB_ models. Models that differ in the underlying algorithm also have limited correlation ranging from 0.5 to 0.8. This fact to some extent is favorable to the use of ensemble paradigm because the low variance of ensemble learning relies on limited correlation between constituent weak learners.
 
-2. Choice of training sets has a significant impact on the outcome. 
+- Choice of training sets has a significant impact on the outcome. 
 
 The figures below present the results of factor backtest when different subsamples are used. Here the "factor" comes from the time series of ML-predicted scores: by using a bunch of stock factors as features for machine learning, we are basically converting multiple factors into one single factor. Stocks are sorted by this factor into 10 groups on a regular basis and portfolio backtests are conducted in each group. In each figure, the upper part presents the equity curves of ten portfolios, and the lower part presents the annualized returns of each portfolio.
 
@@ -51,7 +51,7 @@ The _TB_ model, which uses the data of stocks with the top 20% and bottom 20% pe
 Not only does choice of subsample make a difference, the length of time window also matters. Table 1 reports the results of the portfolio test where the 100 stocks with highest scores were selected at each portfolio rebalance date. Section 2.4 points out that I tested 18 models of distinct configurations, differing in algorithms, subsample or time window. XXX_Composite thus corresponds to combining the scores of models with XXX configuration into one composite score and select stocks accordingly. While I am going to analyze the table again later, here we focus on the results for 100_composite and 50_composite. As I expected, using data from less trading days can make the model more sensitive to the change of market style, thus reducing the max drawdown which usually happens when the market regime shifts. Also, using more data tend to train a more robust model that works better, especially in stable market condition which is usually the case. Consequently, 100_composite still defeats 50_composite in annualized return despite a larger max drawdown. 
 
 
-3. The composite model is the best one.
+- The composite model is the best one.
 
 As is shown in table 1 below, the composite model that aggregates 18 models achieves the best annualized return, and are ranked the 2nd in other metrics except the turnover ratio. 
 
@@ -62,9 +62,9 @@ _Note: Maximum Relative Drawdown uses CSI 500 index as the benchmark_
 It is not surprising that the composite model has the best return performance, because all the labels are generated only taking future return into consideration. I believe that, if when labeling, we use the future return divided by stock volatility as the sorting criteria, which is esentially analogous to sharpe ratio , then the composite model will achieve the best sharpe ratio, probably the max relative drawdown at the same time. This argument leaves open the possiblity of addding another variation of the model configuration to further enhance the performance.
  
 
-Figure 5 shows the equity curve corresponding to the portfolio test of the composite model. The red line is the relative equity curve benchmarked against CSI 500, which is upward most of the time but goes down a little bit during 2017, a year when China A-share Market experienced a major regime shift. The drawdown, however, should be more of a problem to the set of factors I use.
+Finally, figure 5 shows the equity curve corresponding to the portfolio test of the composite model. The red line is the relative equity curve benchmarked against CSI 500, which is upward most of the time but goes down a little bit during 2017, a year when China A-share Market experienced a major regime shift. The drawdown, however, should be more of a problem to the set of factors I use.
 
-**Figure 5**
+**Figure 5** Backtest equity curve: the composite model
 <img src="/images/backtest.png?raw=true"/>
 _Note: Black: portfolio equity curve; green: CSI 500 index equity curve; red: portfolio equity curve relative to CSI 500_
 

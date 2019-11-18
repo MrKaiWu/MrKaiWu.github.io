@@ -19,7 +19,8 @@ We can also think of the time-series of scores as a composite factor originated 
   - Training and validating: When training, a validation set was used for performance evaluation, as well as hyperparameters tuning when necessary. While hyperparameter does matter a lot, in my project it was not the main focus unless I found the loss in validation set barely declined.
   
 #### 2.3 Benchmark:
-  - I was given more than 60 stock factors, and the most simple linear model tended to perform poorly with so many independent variables. Hence I added the L1 regularization to introduce some sparsity. All else equal, I used the linear model instead of machine learning algorithms to repeat the train-validation-predict process, and used the corresponding backtest performance as a benchmark. 
+  - The advantage of machine learning lies in its nonlinear decision boundaries. Its contrast is of course the conventional linear method. I thus used the most simple linear regression with the same set of stock factors as regressors. All else equal, I used the linear model instead of machine learning algorithms to repeat the train-validation-predict process, and used the corresponding backtest performance as a benchmark. 
+  - There is no need to introduce regularization because the factors I was given were filtered in an effort to minimize the correlation between each other (Ridge excluded), and all of them had been proved to be effective methods (Lasso excluded). Actually adding regularization did not improve the predictive power of the linear model that much.
   - That being said, the backtesting module used several major equity indexes as benchmark.
   
 #### 2.4 Ensemble model

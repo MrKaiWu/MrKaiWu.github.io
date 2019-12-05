@@ -7,7 +7,7 @@ Conventional industry classifications typically categorize a company into one in
 
 ### 2. Methodology: Text-based Industry Classification
 
-My idea of using text data for industry reclassification originated from my internship at NLP tech startup. However, when I did my graduate thesis, Hoberg and Phillips (2016) already proposed a solution that had been widely accepted in academia. Hence, the following steps are based on their paper, with some steps adapted to Chinese language.
+My idea of using text data for industry reclassification originated from my internship at an NLP tech startup. However, when I did my graduate thesis, Hoberg and Phillips (2016) already proposed a solution that had been widely accepted in academia. Hence, the following steps are based on their paper, with some steps adapted to Chinese language.
 
 Starting from the 2015 annual report (and the 2017 semi-annual report), the China Securities Regulatory Commission(henceforth CSRC) requires listed companies to disclose their business profiles. This section contains a large number of vocabulary related to the company's products and services. If the product & services descriptions of two companies are similar, they probably belong to the same industries. Based on this observation, my study uses text information to redo the industry classification. The specific steps are as follows:
 

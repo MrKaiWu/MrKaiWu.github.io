@@ -218,7 +218,7 @@ As corporate reports will continue to be released, we can collect more data to f
 
 ### _References:_
 
-_I only list publications that are directly related to this post. My actual graudate thesis actually prsents much more items._
+_I only list publications that are directly related to this post. My actual graudate thesis presents much more items._
 
 1. Bhojraj S, Lee C M C, Oler D K. What's my line? A comparison of industry classification schemes for capital market research[J]. Journal of Accounting Research, 2003, 41(5): 745-774.
 2.	Bhojraj S, Lee C M C. Who is my peer? A valuation‐based approach to the selection of comparable firms[J]. Journal of accounting research, 2002, 40(2): 407-439.
